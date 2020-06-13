@@ -1,3 +1,9 @@
+variable "additional_tags" {
+  description = "Tags to be added to the default tag"
+  type        = map(string)
+  default     = {}
+}
+
 variable "bucket_name" {
   description = "The S3 bucket name"
   type        = string
