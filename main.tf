@@ -7,7 +7,6 @@
 
 # ToDo: change to using map of users and key
 
-
 resource "aws_transfer_server" "this" {
   identity_provider_type = "SERVICE_MANAGED"
   logging_role           = aws_iam_role.transfer_server.arn
