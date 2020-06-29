@@ -1,6 +1,8 @@
 # terraform-aws-transfer-server
 
-Terraform module to create a aws transfer server (SFTP)
+Terraform module to create a aws transfer server (SFTP).
+
+This project is a fork of [Felipe Frizzo's module](https://github.com:felipefrizzo/terraform-aws-transfer-server).
 
 ## Usage
 

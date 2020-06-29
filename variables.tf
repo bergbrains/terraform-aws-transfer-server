@@ -20,6 +20,6 @@ variable "transfer_server_name" {
 }
 
 variable "transfer_server_users" {
-  description = "User name(s) for SFTP server"
+  description = "Map, keyed on user name, where the value is the SSH public key, for SFTP server"
   type        = map(string)
 }
