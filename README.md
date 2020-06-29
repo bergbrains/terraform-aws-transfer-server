@@ -13,11 +13,10 @@ resource "aws_s3_bucket" "bucket" {
 }
 
 module "sftp" {
-#  source = "git::https://github.com:felipefrizzo/terraform-aws-transfer-server.git?ref=master"
-   source = "https://github.com/bergbrains/terraform-aws-transfer-server"
+   source = "git:https://github.com/bergbrains/terraform-aws-transfer-server.git?ref=master"
 
   transfer_server_name       = "sftp-server-name"
-  transfer_server_users   = { eberg = "SSH public key", cgalardi = "SSH public key"}
+  transfer_server_users   = { eberg = "SSH public key", user2 = "SSH public key"}
   bucket_name                = aws_s3_bucket.bucket.id
   bucket_arn                 = aws_s3_bucket.bucket.arn
 }
