@@ -1,5 +1,3 @@
-# terraform-aws-transfer-server
-
 Terraform module to create a aws transfer server (SFTP).
 
 This project is a fork of [Felipe Frizzo's module](https://github.com:felipefrizzo/terraform-aws-transfer-server).
@@ -15,18 +13,41 @@ resource "aws_s3_bucket" "bucket" {
 module "sftp" {
    source = "git:https://github.com/bergbrains/terraform-aws-transfer-server.git?ref=master"
 
-  transfer_server_name       = "sftp-server-name"
-  transfer_server_users   = { eberg = "SSH public key", user2 = "SSH public key"}
-  bucket_name                = aws_s3_bucket.bucket.id
-  bucket_arn                 = aws_s3_bucket.bucket.arn
+  transfer_server_name  = "sftp-server-name"
+  transfer_server_users = { eberg = "SSH public key", user2 = "SSH public key"}
+  bucket_name           = aws_s3_bucket.bucket.id
+  bucket_arn            = aws_s3_bucket.bucket.arn
+  additional_tags       = { client = var.client, environment = var.environment }
 }
 ```
+
+\*/
+
+## Requirements
+
+No requirements.
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | n/a |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-------:|:--------:|
-| bucket_name | S3 bucket name | string | `` | yes |
-| bucket_arn | S3 bucket arn | string | `` | yes |
-| transfer_server_name | Transfer Server name | string | `` | yes |
-| transfer_server_users | Map of user names to SSH public key. | list(string) | `` | yes |
+|------|-------------|------|---------|:--------:|
+| additional\_tags | Tags to be added to the default tag | `map(string)` | `{}` | no |
+| bucket\_arn | The S3 bucket arn | `string` | n/a | yes |
+| bucket\_name | The S3 bucket name. | `string` | n/a | yes |
+| transfer\_server\_name | Transfer Server name | `string` | n/a | yes |
+| transfer\_server\_users | Map, keyed on user name, where the value is the SSH public key, for SFTP server | `map(string)` | n/a | yes |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| bucket\_name | n/a |
+| transfer\_server\_endpoint | n/a |
+| transfer\_server\_id | n/a |
+

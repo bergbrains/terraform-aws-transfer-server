@@ -5,7 +5,7 @@ variable "additional_tags" {
 }
 
 variable "bucket_name" {
-  description = "The S3 bucket name"
+  description = "The S3 bucket name."
   type        = string
 }
 
