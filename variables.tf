@@ -1,5 +1,11 @@
+variable "additional_tags" {
+  description = "Tags to be added to the default tag"
+  type        = map(string)
+  default     = {}
+}
+
 variable "bucket_name" {
-  description = "The S3 bucket name"
+  description = "The S3 bucket name."
   type        = string
 }
 
@@ -13,12 +19,7 @@ variable "transfer_server_name" {
   type        = string
 }
 
-variable "transfer_server_user_names" {
-  description = "User name(s) for SFTP server"
-  type        = list(string)
-}
-
-variable "transfer_server_ssh_keys" {
-  description = "SSH Key(s) for transfer server user(s)"
-  type        = list(string)
+variable "transfer_server_users" {
+  description = "Map, keyed on user name, where the value is the SSH public key, for SFTP server"
+  type        = map(string)
 }
